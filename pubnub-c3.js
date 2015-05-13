@@ -49,9 +49,6 @@ eon.c = {
     options.channel = options.channel || false;
     options.generate = options.generate || {};
     options.flow = options.flow || false;
-    if(options.flow) {
-      options.flow.length = options.flow.length || 0;
-    }
     options.limit = options.limit || 10;
     options.history = options.history || false;
 
@@ -137,25 +134,65 @@ eon.c = {
 
     };
 
-    var buffer = [];
-    var needsTrim = function() {
 
-      buffer = self.chart.data();
+    var lastData = [];
+
+    var buffer = [];
+    var flow = function() {
+
+      console.log('FLOW ---------------')
+
+      console.log('limit: ' + options.limit)
+      console.log('buffer')
+      console.log(buffer)
+      console.log('lastData')
+      console.log(lastData)
 
       var i = 0;
 
       while(i < buffer.length) {
-        if(buffer[i].values.length > options.limit) {
-          return buffer[i].values.length - options.limit;
+        if(buffer[i].length > options.limit) {
+          buffer[i].splice(1, 1);
         }
         i++;
       }
 
-      return false;
+      console.log('----')
+      console.log('trimmed buffer')
+      console.log(buffer)
+
+      i=0;
+
+      console.log('----')
+      console.log('looping through last data')
+      while(i < lastData.length) {
+
+        console.log(lastData[i])
+
+        if(!buffer[i]) {
+          buffer[i] = [lastData[i][0]];
+
+          console.log('setting buffer as')
+          console.log(buffer[i])
+
+        }
+
+        buffer[i].push(lastData[i][1]);
+        console.log('pushing data to buffer')
+        console.log(buffer[i])
+
+        i++;
+
+      }
+
+      console.log('----')
+      console.log('new buffer')
+      console.log(buffer)
+
+      return buffer;
 
     };
 
-    var lastData = [];
     var mapMessage = function(message) {
 
       var i = 0;
@@ -231,19 +268,9 @@ eon.c = {
 
           if(options.flow) {
 
-            if(options.flow === true) {
-              options.flow = {};
-            }
-
-            var trimLength = needsTrim();
-
-            if(trimLength)  {
-              options.flow.length = trimLength;
-            }
-
-            options.flow.columns = lastData;
-
-            self.chart.flow(options.flow);
+            self.chart.load({
+              columns: flow()
+            });
 
           } else {
             self.chart.load({
