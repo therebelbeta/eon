@@ -1,6 +1,8 @@
-# EON Charts
+# EYON Charts
 
-Realtime animated graphs with [PubNub](http://pubnub.com) and [C3](http://c3js.org/).
+Realtime animated graphs with [C3](http://c3js.org/).
+
+Forked from [pubnub/eon-chart](https://github.com/pubnub/eon-chart)
 
 ![](http://i.imgur.com/MRK20Kb.gif)
 
