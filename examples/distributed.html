@@ -1,13 +1,13 @@
 <html>
   <head>
 
-    <link rel="stylesheet" type="text/css" href="../bower_components/c3/c3.min.css">
-    <script src="../bower_components/pubnub/web/pubnub.min.js"></script>
-    <script src="../bower_components/d3/d3.min.js"></script>
-    <script src="../bower_components/c3/c3.min.js"></script>
-    <script src="../bower_components/subsub/subsub.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/c3/c3.min.css">
+    <script src="bower_components/pubnub/web/pubnub.min.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
+    <script src="bower_components/c3/c3.min.js"></script>
+    <script src="bower_components/subsub/subsub.js"></script>
 
-    <script src="../pubnub-c3.js"></script>
+    <script src="../lib/eona.js"></script>
 
     <style>
       .c3-region-1 {
@@ -31,7 +31,8 @@
           bindto: '#chart',
           data: {
             x: 'x',
-            labels: true
+            labels: true,
+            type: 'area'
           },
           axis: {
             x: {

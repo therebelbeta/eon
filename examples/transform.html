@@ -1,13 +1,13 @@
 <html>
   <head>
 
-    <link rel="stylesheet" type="text/css" href="../bower_components/c3/c3.min.css">
-    <script src="../bower_components/pubnub/web/pubnub.min.js"></script>
-    <script src="../bower_components/d3/d3.min.js"></script>
-    <script src="../bower_components/c3/c3.min.js"></script>
-    <script src="../bower_components/subsub/subsub.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/c3/c3.min.css">
+    <script src="bower_components/pubnub/web/pubnub.min.js"></script>
+    <script src="bower_components/d3/d3.min.js"></script>
+    <script src="bower_components/c3/c3.min.js"></script>
+    <script src="bower_components/subsub/subsub.js"></script>
 
-    <script src="../pubnub-c3.js"></script>
+    <script src="../lib/eona.js"></script>
 
     <style>
       .c3-region-1 {
@@ -20,7 +20,7 @@
   <body>
     <div id="chart"></div>
     <script>
-    // using the example stream from 
+    // using the example stream from
     // http://www.pubnub.com/developers/data-streams/sensor-network
     var pubnub = PUBNUB.init({
 		subscribe_key: 'sub-c-5f1b7c8e-fbee-11e3-aa40-02ee2ddab7fe'
